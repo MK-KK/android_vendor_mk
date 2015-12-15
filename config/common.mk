@@ -109,24 +109,12 @@ PRODUCT_COPY_FILES += \
 
 # MoKee prebuilt
 PRODUCT_COPY_FILES += \
-    vendor/mk/prebuilt/ota/verifier:system/bin/verifier \
-    vendor/mk/prebuilt/common/etc/init.d/88preinstall:system/etc/init.d/88preinstall \
-    vendor/mk/prebuilt/common/app/iFlyIME.apk:system/app/iFlyIME.apk
+    vendor/mk/prebuilt/ota/verifier:system/bin/verifier
 
 # Use all prebuilt lib files
 PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/common/lib && \
     find vendor/mk/prebuilt/common/lib -name '*.so' \
     -printf '%p:system/lib/%f ')
-
-# Use all developers-party apk
-PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/$(DEVELOPER_MAINTAINER)/app && \
-    find vendor/mk/prebuilt/$(DEVELOPER_MAINTAINER)/app -name '*.apk' \
-    -printf '%p:system/third-app/%f ')
-
-# Use all third-party apk
-PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/third/app && \
-    find vendor/mk/prebuilt/third/app -name '*.apk' \
-    -printf '%p:system/third-app/%f ')
 
 # Google IME
 ifneq ($(TARGET_EXCLUDE_GOOGLE_IME),true)
